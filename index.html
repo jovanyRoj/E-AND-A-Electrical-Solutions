@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="E7 A Electrical Solution — Licensed residential electricians in Edmond, Oklahoma."/>
+<title>E7 A Electrical Solution — Edmond, Oklahoma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════════════ */
+:root {
+  --bg:    #0A0A0A;
+  --bg2:   #111111;
+  --bg3:   #1A1A1A;
+  --cream: #F5F0E8;
+  --c2:    #9A9590;
+  --c3:    #5A5550;
+  --gold:  #C4A882;
+  --goldh: #D4B892;
+  --bdr:   rgba(255,255,255,0.08);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+  --ease:  cubic-bezier(0.4,0,0.2,1);
+  --eout:  cubic-bezier(0,0,0.2,1);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { font-family:var(--sans); font-weight:300; background:var(--bg); color:var(--cream); overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-thumb { background:var(--gold); }
+
+/* Heading system */
+h1,h2,h3 { font-family:var(--serif); font-weight:300; line-height:1.04; letter-spacing:-.015em; }
+
+/* Reveal system */
+.rv  { opacity:0; transform:translateY(36px); transition:opacity .9s var(--eout), transform .9s var(--eout); }
+.rvl { opacity:0; transform:translateX(-36px); transition:opacity .9s var(--eout), transform .9s var(--eout); }
+.rvr { opacity:0; transform:translateX(36px);  transition:opacity .9s var(--eout), transform .9s var(--eout); }
+.rv.in,.rvl.in,.rvr.in { opacity:1; transform:none; }
+.d1{transition-delay:.05s}.d2{transition-delay:.12s}.d3{transition-delay:.19s}
+.d4{transition-delay:.26s}.d5{transition-delay:.33s}.d6{transition-delay:.4s}
+
+/* Hero reveal */
+.ha { opacity:0; transform:translateY(20px); transition:opacity .75s var(--eout), transform .75s var(--eout); }
+.ha.show { opacity:1; transform:none; }
+
+/* ═══════════════════════════════════════════════════
+   LOADER
+═══════════════════════════════════════════════════ */
+#loader { position:fixed; inset:0; z-index:9999; background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  transition:opacity .7s ease, visibility .7s ease; }
+#loader.out { opacity:0; visibility:hidden; pointer-events:none; }
+.lcard { display:flex; flex-direction:column; align-items:center; gap:20px;
+  padding:56px 72px; border:1px solid var(--bdr); background:var(--bg2); }
+.lbolt { width:42px; height:54px; }
+.lbolt svg { width:100%; height:100%; filter:drop-shadow(0 0 12px var(--gold)); }
+.lbp { stroke-dasharray:220; stroke-dashoffset:220; animation:ldraw .85s ease forwards .2s; }
+.lbf { opacity:0; animation:lfill .3s ease forwards .95s; }
+@keyframes ldraw { to{stroke-dashoffset:0} }
+@keyframes lfill { to{opacity:.7} }
+.lname { font-family:var(--serif); font-size:1.5rem; font-weight:300; letter-spacing:.06em;
+  opacity:0; animation:lup .5s ease forwards .9s; }
+.lname span { color:var(--gold); font-style:italic; }
+.lbar { width:130px; height:1px; background:var(--bdr); overflow:hidden;
+  opacity:0; animation:lup .4s ease forwards 1.2s; }
+.lbar-fill { height:100%; width:0; background:var(--gold); animation:lbar 1.4s ease forwards 1.3s; }
+.lsub { font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--c3);
+  opacity:0; animation:lup .4s ease forwards 1.6s; }
+@keyframes lup  { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+@keyframes lbar { to{width:100%} }
+
+/* ═══════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════ */
+#nav {
+  position:fixed; top:0; left:0; right:0; z-index:800;
+  padding:28px 56px;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:padding .45s var(--ease), background .45s var(--ease), border-color .45s var(--ease);
+  border-bottom:1px solid transparent;
+}
+#nav.pinned {
+  padding:16px 56px;
+  background:rgba(10,10,10,.9);
+  backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+  border-color:var(--bdr);
+}
+.nlogo { display:flex; align-items:center; gap:12px; }
+.nlogo-ic {
+  width:32px; height:32px; border:1px solid var(--gold);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.nlogo-ic svg { width:14px; height:14px; fill:none; stroke:var(--gold); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.nlogo-tx { font-family:var(--serif); font-size:1rem; font-weight:400; letter-spacing:.07em; }
+.nlogo-tx em { color:var(--gold); font-style:italic; }
+.nlinks { display:flex; }
+.nl { padding:8px 18px; font-size:.7rem; font-weight:500; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--c2); transition:color .25s; cursor:pointer; }
+.nl:hover,.nl.on { color:var(--cream); }
+.ncta { padding:10px 24px; border:1px solid var(--gold);
+  font-size:.7rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--gold); background:transparent;
+  transition:background .3s, color .3s; cursor:pointer; }
+.ncta:hover { background:var(--gold); color:var(--bg); }
+.ham { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+.ham span { width:22px; height:1px; background:var(--cream); display:block; transition:all .3s; }
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mob { display:none; position:fixed; inset:0; z-index:700;
+  background:rgba(10,10,10,.98); backdrop-filter:blur(30px);
+  flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+.mob.open { display:flex; }
+.mob a { font-family:var(--serif); font-size:2.5rem; font-weight:300;
+  font-style:italic; color:var(--c2); transition:color .25s; }
+.mob a:hover { color:var(--gold); }
+
+/* ═══════════════════════════════════════════════════
+   HERO — full viewport, parallax bg
+═══════════════════════════════════════════════════ */
+#hero {
+  position:relative; height:100vh; min-height:640px;
+  display:flex; align-items:flex-end; overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:-20%; z-index:0; will-change:transform;
+  background:
+    linear-gradient(to bottom, rgba(10,10,10,.15) 0%, rgba(10,10,10,.78) 85%, var(--bg) 100%),
+    linear-gradient(135deg, rgba(196,168,130,.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 60% 40%, rgba(30,20,10,.9), rgba(10,10,10,.98)),
+    repeating-linear-gradient(0deg,  rgba(196,168,130,.03) 0, rgba(196,168,130,.03) 1px, transparent 1px, transparent 68px),
+    repeating-linear-gradient(90deg, rgba(196,168,130,.03) 0, rgba(196,168,130,.03) 1px, transparent 1px, transparent 68px),
+    linear-gradient(160deg, #0f0b07 0%, #0a0a0a 40%, #07090f 100%);
+}
+/* Subtle electric glow in background */
+.hero-bg::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 50% at 70% 45%, rgba(196,168,130,.06) 0%, transparent 70%);
+}
+
+.hero-inner {
+  position:relative; z-index:2; width:100%; max-width:1280px; margin:0 auto;
+  padding:0 56px clamp(64px,8vw,100px);
+}
+.hero-kicker {
+  display:flex; align-items:center; gap:14px; margin-bottom:24px;
+  font-size:.68rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--gold);
+}
+.hero-kicker::before { content:''; width:28px; height:1px; background:var(--gold); }
+.hero-kicker-dot { width:4px; height:4px; border-radius:50%; background:var(--gold); animation:kpulse 2.5s ease-in-out infinite; }
+@keyframes kpulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+.hero-h1 {
+  font-size:clamp(3.8rem,9vw,8rem); font-weight:300; line-height:.98; letter-spacing:-.025em;
+  margin-bottom:32px; max-width:800px;
+}
+.hero-h1 em { display:block; color:var(--gold); font-style:italic; }
+
+.hero-bottom { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:32px; }
+.hero-sub { font-size:1rem; font-weight:300; line-height:1.75; color:var(--c2); max-width:400px; }
+.hero-actions { display:flex; align-items:center; gap:16px; flex-shrink:0; }
+
+/* Buttons */
+.btn-fill {
+  display:inline-flex; align-items:center; gap:9px; padding:13px 28px;
+  background:var(--gold); color:var(--bg); border:1px solid var(--gold);
+  font-size:.7rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase;
+  cursor:pointer; transition:background .3s; position:relative; overflow:hidden;
+}
+.btn-fill::after { content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
+  transform:translateX(-110%); transition:transform .55s; }
+.btn-fill:hover { background:var(--goldh); }
+.btn-fill:hover::after { transform:translateX(110%); }
+.btn-fill svg { width:13px; height:13px; flex-shrink:0; }
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:8px; padding:13px 28px;
+  border:1px solid var(--bdr); color:var(--c2); background:transparent;
+  font-size:.7rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase;
+  cursor:pointer; transition:border-color .3s, color .3s;
+}
+.btn-ghost:hover { border-color:var(--gold); color:var(--cream); }
+
+/* Scroll indicator */
+.hero-scroll {
+  position:absolute; right:56px; bottom:clamp(48px,6vw,80px); z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+}
+.hero-scroll-line { width:1px; height:52px; background:var(--bdr); overflow:hidden; position:relative; }
+.hero-scroll-thumb { position:absolute; inset:0; top:-100%;
+  background:linear-gradient(to bottom, transparent, var(--gold));
+  animation:sdown 2.2s ease-in-out infinite; }
+@keyframes sdown { from{top:-100%} to{top:100%} }
+.hero-scroll-label { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--c3); writing-mode:vertical-rl; }
+
+/* Stats strip at bottom of hero */
+.hero-stats {
+  display:flex; gap:0; border-top:1px solid var(--bdr);
+  margin-top:48px; padding-top:32px;
+}
+.hstat {
+  flex:1; display:flex; flex-direction:column; gap:4px;
+  padding-right:32px; border-right:1px solid var(--bdr);
+  margin-right:32px;
+}
+.hstat:last-child { border-right:none; margin-right:0; padding-right:0; }
+.hstat-n { font-family:var(--serif); font-size:2.4rem; font-weight:300; font-style:italic; color:var(--gold); line-height:1; }
+.hstat-l { font-size:.62rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--c3); margin-top:2px; }
+
+/* ═══════════════════════════════════════════════════
+   SERVICES — editorial numbered list (The Bar style)
+═══════════════════════════════════════════════════ */
+#services { background:var(--bg2); padding:0; }
+
+.services-head {
+  padding:clamp(64px,8vw,100px) 56px clamp(40px,5vw,64px);
+  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end;
+  border-bottom:1px solid var(--bdr);
+}
+.services-label {
+  font-size:.68rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:18px;
+}
+.services-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+.services-h { font-size:clamp(2.4rem,5vw,4.2rem); font-weight:300; }
+.services-h em { color:var(--gold); font-style:italic; display:block; }
+.services-sub { font-size:.9rem; font-weight:300; line-height:1.8; color:var(--c2); max-width:380px; align-self:end; }
+
+/* THE BAR — service list */
+.svc-list { display:flex; flex-direction:column; }
+
+.svc-item {
+  display:grid; grid-template-columns:80px 1fr 48px;
+  align-items:center; gap:0;
+  padding:0 56px;
+  border-bottom:1px solid var(--bdr);
+  cursor:default; position:relative; overflow:hidden;
+  text-decoration:none; color:inherit;
+  transition:background .4s;
+  min-height:88px;
+}
+.svc-item::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(196,168,130,.04) 0%, transparent 60%);
+  opacity:0; transition:opacity .4s;
+}
+.svc-item:hover { background:rgba(255,255,255,.02); }
+.svc-item:hover::before { opacity:1; }
+
+.svc-n {
+  font-family:var(--serif); font-size:1.1rem; font-weight:300; font-style:italic;
+  color:var(--c3); transition:color .4s; padding:24px 0;
+}
+.svc-item:hover .svc-n { color:var(--gold); }
+
+.svc-body { padding:24px 0; }
+.svc-name {
+  font-family:var(--serif);
+  font-size:clamp(1.4rem,3vw,2.4rem); font-weight:300; letter-spacing:-.01em;
+  transition:color .35s;
+}
+.svc-item:hover .svc-name { color:var(--gold); }
+.svc-desc {
+  font-size:.8rem; color:var(--c2); line-height:1.65; font-weight:300;
+  max-height:0; overflow:hidden;
+  transition:max-height .45s var(--eout), opacity .35s, margin-top .35s;
+  opacity:0; margin-top:0;
+}
+.svc-item:hover .svc-desc { max-height:60px; opacity:1; margin-top:8px; }
+
+.svc-arr {
+  display:flex; justify-content:flex-end; padding:24px 0;
+  opacity:0; transform:translateX(-10px);
+  transition:opacity .35s, transform .35s;
+}
+.svc-item:hover .svc-arr { opacity:1; transform:none; }
+.svc-arr svg { width:20px; height:20px; stroke:var(--gold); fill:none; stroke-width:1.5; }
+
+.svc-tag-inline {
+  margin-left:16px;
+  display:inline-flex; align-items:center;
+  padding:2px 10px; border:1px solid var(--bdr);
+  font-family:var(--sans); font-size:.58rem; font-weight:500;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--c3);
+  transition:border-color .35s, color .35s; vertical-align:middle;
+}
+.svc-item:hover .svc-tag-inline { border-color:rgba(196,168,130,.3); color:var(--gold); }
+
+/* ═══════════════════════════════════════════════════
+   STATEMENT PANEL — full bleed quote between sections
+═══════════════════════════════════════════════════ */
+.statement-panel {
+  position:relative; overflow:hidden;
+  padding:clamp(80px,12vw,140px) 56px;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  background:var(--bg);
+}
+.statement-panel::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(196,168,130,.05) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, rgba(196,168,130,.025) 0, rgba(196,168,130,.025) 1px, transparent 1px, transparent 72px),
+    repeating-linear-gradient(90deg, rgba(196,168,130,.025) 0, rgba(196,168,130,.025) 1px, transparent 1px, transparent 72px);
+}
+.statement-inner { position:relative; z-index:1; max-width:920px; }
+.statement-quote {
+  font-family:var(--serif);
+  font-size:clamp(2rem,5vw,4.2rem); font-weight:300; font-style:italic;
+  line-height:1.2; letter-spacing:-.015em; color:var(--cream);
+  margin-bottom:32px;
+}
+.statement-quote em { color:var(--gold); font-style:normal; }
+.statement-attr {
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  font-size:.68rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--c3);
+}
+.statement-attr::before, .statement-attr::after { content:''; flex:1; max-width:60px; height:1px; background:var(--bdr); }
+
+/* ═══════════════════════════════════════════════════
+   ABOUT — cinematic split: large image + text flow
+═══════════════════════════════════════════════════ */
+#about { padding:0; background:var(--bg); }
+
+.about-split {
+  display:grid; grid-template-columns:55% 45%; min-height:90vh;
+}
+
+/* Image column */
+.about-img-col {
+  position:relative; overflow:hidden;
+}
+.about-img-wrap {
+  position:absolute; inset:-10%;
+  will-change:transform;
+  background:
+    linear-gradient(to right, rgba(10,10,10,.02), rgba(10,10,10,.12)),
+    linear-gradient(160deg, #0f0c09 0%, #111418 50%, #0c0e14 100%);
+  display:flex; align-items:center; justify-content:center;
+}
+/* Atmospheric grid texture on the image column */
+.about-img-wrap::before {
+  content:''; position:absolute; inset:0; opacity:.05;
+  background-image:
+    repeating-linear-gradient(0deg, var(--gold) 0, var(--gold) 1px, transparent 1px, transparent 52px),
+    repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 1px, transparent 1px, transparent 52px);
+}
+.about-img-svg {
+  position:relative; z-index:1; opacity:.2;
+  filter:drop-shadow(0 0 60px rgba(196,168,130,.3));
+}
+
+/* Floating badge overlaid on image */
+.about-badge {
+  position:absolute; z-index:2;
+  background:rgba(10,10,10,.82); border:1px solid var(--bdr);
+  backdrop-filter:blur(10px); padding:18px 22px;
+}
+.about-badge-n { font-family:var(--serif); font-size:2rem; font-weight:300; font-style:italic; color:var(--gold); line-height:1; }
+.about-badge-l { font-size:.58rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--c3); margin-top:5px; }
+
+/* Thin label on left edge of image */
+.about-caption {
+  position:absolute; bottom:0; left:0; right:0; z-index:2;
+  padding:16px 32px;
+  border-top:1px solid var(--bdr);
+  background:rgba(10,10,10,.8); backdrop-filter:blur(8px);
+  display:flex; align-items:center; gap:12px;
+}
+.about-caption-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); animation:kpulse 2.5s ease-in-out infinite; }
+.about-caption-text { font-size:.72rem; font-weight:400; color:var(--c2); }
+
+/* Right text column */
+.about-text-col {
+  padding:clamp(64px,8vw,100px) clamp(40px,5vw,72px);
+  display:flex; flex-direction:column; justify-content:center;
+  border-left:1px solid var(--bdr);
+}
+.about-label {
+  font-size:.68rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:24px;
+}
+.about-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+.about-h { font-size:clamp(2.2rem,4vw,3.5rem); font-weight:300; margin-bottom:0; }
+.about-h em { color:var(--gold); font-style:italic; display:block; }
+.about-quote {
+  font-family:var(--serif);
+  font-size:clamp(1rem,1.8vw,1.3rem); font-weight:300; font-style:italic;
+  line-height:1.6; color:var(--cream);
+  border-left:1px solid var(--gold); padding-left:20px;
+  margin:28px 0;
+}
+.about-body { font-size:.86rem; line-height:1.9; color:var(--c2); margin-bottom:28px; }
+
+/* Credentials — minimal list */
+.cred-list { display:flex; flex-direction:column; gap:0; border-top:1px solid var(--bdr); margin-bottom:36px; }
+.cred-item {
+  display:flex; align-items:center; gap:14px; padding:14px 0;
+  border-bottom:1px solid var(--bdr); transition:background .25s;
+}
+.cred-icon { width:32px; height:32px; border:1px solid var(--bdr); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:border-color .3s; }
+.cred-item:hover .cred-icon { border-color:var(--gold); }
+.cred-icon svg { width:14px; height:14px; stroke:var(--gold); fill:none; stroke-width:1.8; }
+.cred-strong { font-size:.82rem; font-weight:500; display:block; margin-bottom:1px; }
+.cred-sub { font-size:.72rem; color:var(--c2); }
+
+/* ═══════════════════════════════════════════════════
+   NUMBERS BAND — wide horizontal stats
+═══════════════════════════════════════════════════ */
+.numbers-band {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--bdr); border-bottom:1px solid var(--bdr);
+  background:var(--bg2);
+}
+.nb-item {
+  padding:clamp(40px,5vw,64px) 48px;
+  border-right:1px solid var(--bdr);
+  text-align:left; transition:background .35s;
+}
+.nb-item:last-child { border-right:none; }
+.nb-item:hover { background:var(--bg3); }
+.nb-n {
+  font-family:var(--serif);
+  font-size:clamp(3rem,6vw,5.5rem); font-weight:300; font-style:italic;
+  color:var(--gold); line-height:1; margin-bottom:8px;
+}
+.nb-l { font-size:.68rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--c3); }
+.nb-note { font-size:.78rem; color:var(--c2); margin-top:8px; line-height:1.5; }
+
+/* ═══════════════════════════════════════════════════
+   PROCESS — horizontal timeline (fluid)
+═══════════════════════════════════════════════════ */
+#process { padding:0; background:var(--bg); overflow:hidden; }
+
+.process-inner { padding:clamp(64px,8vw,100px) 56px; }
+.process-label {
+  font-size:.68rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:20px;
+}
+.process-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+.process-h { font-size:clamp(2rem,4.5vw,3.8rem); font-weight:300; margin-bottom:64px; }
+.process-h em { color:var(--gold); font-style:italic; }
+
+.process-steps {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; border-top:1px solid var(--bdr);
+}
+.pstep {
+  padding:40px 32px 40px 0;
+  border-right:1px solid var(--bdr);
+  transition:background .35s;
+}
+.pstep:last-child { border-right:none; padding-right:0; }
+.pstep:first-child { padding-left:0; }
+.pstep { padding-left:32px; }
+.pstep:first-child { padding-left:0; }
+.pstep:hover { background:rgba(255,255,255,.015); }
+
+.pstep-n {
+  font-family:var(--serif);
+  font-size:3.5rem; font-weight:300; font-style:italic;
+  color:rgba(196,168,130,.2); line-height:1; margin-bottom:20px;
+  transition:color .35s;
+}
+.pstep:hover .pstep-n { color:var(--gold); }
+.pstep-title { font-family:var(--serif); font-size:1.15rem; font-weight:300; margin-bottom:10px; }
+.pstep-desc { font-size:.8rem; color:var(--c2); line-height:1.75; font-weight:300; }
+
+/* ═══════════════════════════════════════════════════
+   TESTIMONIALS — editorial layout
+═══════════════════════════════════════════════════ */
+#testimonials { padding:0; background:var(--bg2); }
+
+.test-inner { padding:clamp(64px,8vw,100px) 56px; }
+.test-head { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; margin-bottom:64px; }
+.test-label {
+  font-size:.68rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:18px;
+}
+.test-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+.test-h { font-size:clamp(2.4rem,5vw,4.2rem); font-weight:300; }
+.test-h em { color:var(--gold); font-style:italic; display:block; }
+.test-sub { font-size:.9rem; font-weight:300; line-height:1.8; color:var(--c2); align-self:end; max-width:380px; }
+
+/* Featured big quote */
+.test-featured {
+  padding:48px 0; border-top:1px solid var(--bdr); border-bottom:1px solid var(--bdr);
+  margin-bottom:2px;
+  display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center;
+}
+.test-big-q {
+  font-family:var(--serif);
+  font-size:clamp(1.3rem,2.8vw,2.2rem); font-weight:300; font-style:italic;
+  line-height:1.4; color:var(--cream);
+}
+.test-big-meta { text-align:right; white-space:nowrap; }
+
+/* Smaller testimonials grid */
+.test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+.test-card {
+  padding:36px 0 36px;
+  border-right:1px solid var(--bdr);
+  padding-right:36px; padding-left:36px;
+  position:relative; overflow:hidden;
+  transition:background .35s;
+}
+.test-card:first-child { padding-left:0; }
+.test-card:last-child { border-right:none; padding-right:0; }
+.test-card:hover { background:rgba(255,255,255,.015); }
+.test-card::after {
+  content:'\201C'; position:absolute; top:-12px; right:12px;
+  font-family:var(--serif); font-size:7rem; font-style:italic;
+  color:rgba(196,168,130,.06); line-height:1; pointer-events:none;
+}
+
+.tst { display:flex; gap:3px; margin-bottom:14px; }
+.ts  { width:11px; height:11px; fill:var(--gold); }
+.tq  { font-family:var(--serif); font-size:.92rem; font-weight:300; font-style:italic;
+  line-height:1.75; color:var(--cream); margin-bottom:20px; }
+.tau { display:flex; align-items:center; gap:10px; }
+.tav { width:34px; height:34px; border:1px solid var(--bdr);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.72rem; font-weight:500; color:var(--c2); flex-shrink:0; }
+.tnm { font-size:.82rem; font-weight:500; }
+.tlc { font-size:.66rem; color:var(--c3); margin-top:1px; }
+
+/* ═══════════════════════════════════════════════════
+   CONTACT — two col, minimal
+═══════════════════════════════════════════════════ */
+#contact { padding:0; background:var(--bg); }
+
+.contact-inner {
+  padding:clamp(64px,8vw,100px) 56px;
+  display:grid; grid-template-columns:1fr 1.3fr; gap:80px; align-items:start;
+}
+.contact-label {
+  font-size:.68rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:20px;
+}
+.contact-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+.contact-h {
+  font-family:var(--serif);
+  font-size:clamp(2rem,3.8vw,3.2rem); font-weight:300; margin-bottom:16px;
+}
+.contact-h em { color:var(--gold); font-style:italic; display:block; }
+.contact-sub { font-size:.88rem; font-weight:300; line-height:1.8; color:var(--c2); margin-bottom:0; }
+
+.cways { display:flex; flex-direction:column; gap:0; border-top:1px solid var(--bdr); margin:32px 0; }
+.cway {
+  display:flex; align-items:center; gap:14px; padding:16px 0;
+  border-bottom:1px solid var(--bdr);
+  text-decoration:none; color:inherit; transition:background .25s;
+}
+.cway:hover { padding-left:6px; }
+.cway-ic { width:34px; height:34px; border:1px solid var(--bdr); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:border-color .3s; }
+.cway:hover .cway-ic { border-color:var(--gold); }
+.cway-ic svg { width:14px; height:14px; stroke:var(--gold); fill:none; stroke-width:1.8; }
+.cway-l { font-size:.6rem; color:var(--c3); letter-spacing:.12em; text-transform:uppercase; margin-bottom:1px; }
+.cway-v { font-size:.88rem; font-weight:400; }
+
+/* Form */
+.contact-form { background:var(--bg2); border:1px solid var(--bdr); padding:40px; }
+.form-h { font-family:var(--serif); font-size:1.55rem; font-weight:300; margin-bottom:4px; }
+.form-s { font-size:.72rem; color:var(--c3); margin-bottom:28px; }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.fg { display:flex; flex-direction:column; gap:7px; margin-bottom:12px; }
+.fg label { font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--c3); }
+.fg input, .fg select, .fg textarea {
+  background:var(--bg); border:1px solid var(--bdr);
+  border-radius:0; padding:12px 16px;
+  font-size:.87rem; color:var(--cream); font-family:var(--sans); font-weight:300;
+  outline:none; width:100%; transition:border-color .25s;
+}
+.fg input::placeholder, .fg textarea::placeholder { color:var(--c3); }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color:var(--gold); }
+.fg select { appearance:none; cursor:pointer; }
+.fg select option { background:var(--bg2); }
+.fg textarea { resize:vertical; min-height:96px; line-height:1.65; }
+.form-btn {
+  width:100%; margin-top:4px; padding:14px;
+  background:var(--gold); color:var(--bg); border:1px solid var(--gold);
+  font-size:.7rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase;
+  font-family:var(--sans); cursor:pointer; transition:background .3s;
+  position:relative; overflow:hidden;
+}
+.form-btn::after { content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
+  transform:translateX(-110%); transition:transform .55s; }
+.form-btn:hover { background:var(--goldh); }
+.form-btn:hover::after { transform:translateX(110%); }
+
+/* ═══════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════ */
+footer { background:var(--bg); border-top:1px solid var(--bdr); padding:clamp(48px,6vw,72px) 56px 28px; }
+.ft { max-width:1280px; margin:0 auto; }
+.ftop { display:grid; grid-template-columns:2fr 1fr 1fr 1.2fr; gap:56px; margin-bottom:48px; }
+.fbl p { font-size:.78rem; color:var(--c3); line-height:1.85; max-width:240px; margin-top:14px; }
+.flic { display:inline-flex; align-items:center; gap:6px; margin-top:16px;
+  padding:5px 12px; border:1px solid var(--bdr);
+  font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+.fc h5 { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--c3); margin-bottom:18px; }
+.fc ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.fc ul li a { font-size:.8rem; color:var(--c2); transition:color .25s; }
+.fc ul li a:hover { color:var(--cream); }
+.fc address { font-style:normal; font-size:.8rem; color:var(--c3); line-height:2; }
+.fc address a { color:var(--c2); transition:color .25s; }
+.fc address a:hover { color:var(--gold); }
+.fbot { border-top:1px solid var(--bdr); padding-top:24px;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.fbot p { font-size:.66rem; color:var(--c3); }
+.fbot span { color:var(--gold); }
+
+/* Float CTA */
+.fcall {
+  position:fixed; bottom:28px; right:28px; z-index:600;
+  display:flex; align-items:center; gap:9px; padding:12px 22px;
+  background:var(--gold); color:var(--bg); border:1px solid var(--gold);
+  font-size:.68rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+  transition:opacity .4s, background .3s, transform .3s;
+  opacity:0; pointer-events:none;
+}
+.fcall svg { width:13px; height:13px; stroke:var(--bg); fill:none; stroke-width:2.2; }
+.fcall:hover { background:var(--goldh); transform:translateY(-2px); }
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════ */
+@media (max-width:1100px) {
+  #nav, #nav.pinned { padding:18px 32px; }
+  .hero-inner { padding-left:32px; padding-right:32px; }
+  .hero-scroll { right:32px; }
+  .services-head { grid-template-columns:1fr; gap:24px; padding:56px 32px 40px; }
+  .svc-item { padding:0 32px; grid-template-columns:60px 1fr 36px; }
+  .about-split { grid-template-columns:1fr; min-height:auto; }
+  .about-img-col { height:480px; }
+  .about-img-wrap { position:absolute; }
+  .about-text-col { border-left:none; border-top:1px solid var(--bdr); padding:48px 32px; }
+  .numbers-band { grid-template-columns:1fr 1fr; }
+  .nb-item:nth-child(2) { border-right:none; }
+  .nb-item:nth-child(3) { border-top:1px solid var(--bdr); }
+  .nb-item:nth-child(4) { border-top:1px solid var(--bdr); border-right:none; }
+  .process-inner { padding:56px 32px; }
+  .process-steps { grid-template-columns:1fr 1fr; }
+  .pstep { padding:32px 24px; }
+  .pstep:nth-child(2) { border-right:none; }
+  .pstep:nth-child(3) { border-top:1px solid var(--bdr); padding-left:0; }
+  .pstep:nth-child(4) { border-top:1px solid var(--bdr); border-right:none; }
+  .test-inner { padding:56px 32px; }
+  .test-head { grid-template-columns:1fr; gap:24px; }
+  .test-featured { grid-template-columns:1fr; gap:24px; }
+  .test-big-meta { text-align:left; }
+  .test-grid { grid-template-columns:1fr; }
+  .test-card { border-right:none; padding-left:0; padding-right:0; border-bottom:1px solid var(--bdr); }
+  .test-card:last-child { border-bottom:none; }
+  .contact-inner { grid-template-columns:1fr; gap:48px; padding:56px 32px; }
+  .ftop { grid-template-columns:1fr 1fr; gap:36px; }
+  .nlinks { display:none; }
+  .ncta { display:none; }
+  .ham { display:flex; }
+  .statement-panel { padding:64px 32px; }
+}
+
+@media (max-width:768px) {
+  .hero-inner { padding:0 24px clamp(48px,6vw,72px); }
+  .hero-stats { flex-wrap:wrap; gap:0; }
+  .hstat { flex:0 0 50%; border-bottom:1px solid var(--bdr); }
+  .hstat:nth-child(2) { border-right:none; }
+  .hstat:nth-child(3) { border-bottom:none; }
+  .hstat:nth-child(4) { border-right:none; border-bottom:none; }
+  .svc-item { padding:0 24px; grid-template-columns:50px 1fr 28px; min-height:72px; }
+  .svc-name { font-size:clamp(1.2rem,5vw,1.8rem); }
+  .hero-h1 { font-size:clamp(3rem,10vw,5rem); }
+  .numbers-band { grid-template-columns:1fr; }
+  .nb-item { border-right:none; border-bottom:1px solid var(--bdr); }
+  .nb-item:last-child { border-bottom:none; }
+  .nb-item:nth-child(3) { border-top:none; }
+  .nb-item:nth-child(4) { border-top:none; }
+  .process-steps { grid-template-columns:1fr; }
+  .pstep { border-right:none; border-bottom:1px solid var(--bdr); padding-left:0; padding-right:0; }
+  .pstep:nth-child(2) { border-top:none; }
+  .pstep:nth-child(3) { border-top:none; }
+  .pstep:nth-child(4) { border-top:none; border-bottom:none; }
+  .ftop { grid-template-columns:1fr; gap:28px; }
+  footer { padding:48px 24px 24px; }
+  .fbot { flex-direction:column; }
+  .contact-form { padding:28px 20px; }
+  .frow { grid-template-columns:1fr; }
+  .fcall { bottom:16px; right:16px; }
+  .hero-scroll { display:none; }
+}
+
+@media (max-width:480px) {
+  .hero-inner { padding:0 20px clamp(40px,8vw,64px); }
+  .hero-bottom { flex-direction:column; align-items:flex-start; }
+  .hero-actions { flex-direction:column; width:100%; }
+  .btn-fill, .btn-ghost { width:100%; justify-content:center; }
+  .services-head { padding:40px 20px 28px; }
+  .svc-item { padding:0 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ⚡ LIGHTNING CURSOR CANVAS -->
+<canvas id="boltCanvas" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;"></canvas>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="lcard">
+    <div class="lbolt">
+      <svg viewBox="0 0 48 60" fill="none">
+        <path class="lbp" d="M31 3L6 35H22L17 57L44 24H28L31 3Z" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="lbf" d="M31 3L6 35H22L17 57L44 24H28L31 3Z" fill="url(#lg)"/>
+        <defs><linearGradient id="lg" x1="6" y1="3" x2="44" y2="57" gradientUnits="userSpaceOnUse"><stop stop-color="#D4B892"/><stop offset="1" stop-color="#C4A882"/></linearGradient></defs>
+      </svg>
+    </div>
+    <div class="lname">E7 A <span>Electrical</span> Solution</div>
+    <div class="lbar"><div class="lbar-fill"></div></div>
+    <div class="lsub">Edmond, Oklahoma · Est. 2014</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nlogo">
+    <div class="nlogo-ic"><svg viewBox="0 0 24 30"><path d="M18 2L4 16H12L10 28L22 12H14L18 2Z"/></svg></div>
+    <div class="nlogo-tx">E7 A <em>Electrical</em></div>
+  </a>
+  <div class="nlinks">
+    <a href="#services" class="nl">Services</a>
+    <a href="#about"    class="nl">About</a>
+    <a href="#process"  class="nl">Process</a>
+    <a href="#testimonials" class="nl">Reviews</a>
+  </div>
+  <a href="#contact" class="ncta">Free Estimate</a>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob" id="mob">
+  <a href="#services"     onclick="closeMob()">Services</a>
+  <a href="#about"        onclick="closeMob()">About</a>
+  <a href="#process"      onclick="closeMob()">Process</a>
+  <a href="#testimonials" onclick="closeMob()">Reviews</a>
+  <a href="#contact"      onclick="closeMob()">Free Estimate</a>
+  <a href="tel:4055550187" onclick="closeMob()" style="font-family:var(--sans);font-size:1rem;font-style:normal;color:var(--c3);letter-spacing:.04em">(405) 555-0187</a>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg" data-parallax="0.35" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-kicker ha">
+      <span class="hero-kicker-dot"></span>
+      Edmond, Oklahoma &nbsp;·&nbsp; Licensed &amp; Insured
+    </div>
+    <h1 class="hero-h1 ha">
+      Power Your<br><em>Home Right.</em>
+    </h1>
+    <div class="hero-bottom ha">
+      <p class="hero-sub">Residential electrical done with precision and care. Panel upgrades, full rewires, EV chargers, and 24/7 emergency response across the OKC metro.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-fill">Get Free Estimate <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a href="#services" class="btn-ghost">View Services</a>
+      </div>
+    </div>
+
+    <div class="hero-stats ha">
+      <div class="hstat"><div class="hstat-n">10+</div><div class="hstat-l">Years in Business</div></div>
+      <div class="hstat"><div class="hstat-n">500+</div><div class="hstat-l">Homes Served</div></div>
+      <div class="hstat"><div class="hstat-n">4.9★</div><div class="hstat-l">Google Rating</div></div>
+      <div class="hstat"><div class="hstat-n">24/7</div><div class="hstat-l">Emergency Line</div></div>
+    </div>
+  </div>
+
+  <div class="hero-scroll ha">
+    <div class="hero-scroll-line"><div class="hero-scroll-thumb"></div></div>
+    <div class="hero-scroll-label">Scroll</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SERVICES — Editorial numbered list
+══════════════════════════════════════════════ -->
+<section id="services">
+  <div class="services-head rv">
+    <div>
+      <div class="services-label">What We Do</div>
+      <h2 class="services-h">Residential<br><em>Electrical Services</em></h2>
+    </div>
+    <p class="services-sub">Professional solutions for every electrical need — delivered by licensed Oklahoma electricians with 10+ years of experience in the OKC metro.</p>
+  </div>
+
+  <div class="svc-list">
+    <div class="svc-item rv d1">
+      <div class="svc-n">01</div>
+      <div class="svc-body">
+        <div class="svc-name">Panel Upgrades &amp; Installation <span class="svc-tag-inline">Most Requested</span></div>
+        <div class="svc-desc">100A–400A upgrades. Permit pulled, code-compliant, inspection passed first time.</div>
+      </div>
+      <div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </div>
+    <div class="svc-item rv d2">
+      <div class="svc-n">02</div>
+      <div class="svc-body">
+        <div class="svc-name">Wiring &amp; Rewiring <span class="svc-tag-inline">Full Service</span></div>
+        <div class="svc-desc">New construction or full home rewires. Knob-and-tube &amp; aluminum remediation.</div>
+      </div>
+      <div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </div>
+    <div class="svc-item rv d3">
+      <div class="svc-n">03</div>
+      <div class="svc-body">
+        <div class="svc-name">Outlet &amp; Switch Installation <span class="svc-tag-inline">Quick Install</span></div>
+        <div class="svc-desc">GFCI, AFCI, USB &amp; smart outlets. Smart switches installed and configured.</div>
+      </div>
+      <div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </div>
+    <div class="svc-item rv d4">
+      <div class="svc-n">04</div>
+      <div class="svc-body">
+        <div class="svc-name">Lighting Installation <span class="svc-tag-inline">Design + Install</span></div>
+        <div class="svc-desc">Recessed, ceiling fans, exterior, landscape, and smart home lighting systems.</div>
+      </div>
+      <div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </div>
+    <div class="svc-item rv d5">
+      <div class="svc-n">05</div>
+      <div class="svc-body">
+        <div class="svc-name">Emergency Service <span class="svc-tag-inline">24/7 Available</span></div>
+        <div class="svc-desc">24/7 response for power outages, sparks, tripped breakers. We answer the phone.</div>
+      </div>
+      <div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </div>
+    <div class="svc-item rv d6">
+      <div class="svc-n">06</div>
+      <div class="svc-body">
+        <div class="svc-name">EV Charger Installation <span class="svc-tag-inline">Future Ready</span></div>
+        <div class="svc-desc">Level 1 &amp; 2 home EV charging — Tesla, Ford, Rivian, Chevy and all major brands.</div>
+      </div>
+      <div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     STATEMENT PANEL
+══════════════════════════════════════════════ -->
+<div class="statement-panel" data-parallax="0.2">
+  <div class="statement-inner rv">
+    <p class="statement-quote">"We treat every home like it's our own — because in Edmond, your neighbor is <em>our neighbor.</em>"</p>
+    <div class="statement-attr">E7 A Electrical Solution &nbsp;·&nbsp; Since 2014</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ABOUT — cinematic split
+══════════════════════════════════════════════ -->
+<section id="about">
+  <div class="about-split">
+    <!-- Image column -->
+    <div class="about-img-col rvl">
+      <div class="about-img-wrap" data-parallax="0.25">
+        <svg class="about-img-svg" viewBox="0 0 160 200" fill="none" width="160" height="200">
+          <path d="M120 14L26 108H74L54 186L148 80H94L120 14Z" stroke="url(#asvg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
+          <path d="M120 14L26 108H74L54 186L148 80H94L120 14Z" fill="url(#asvg)" opacity=".08"/>
+          <circle cx="80" cy="100" r="62" stroke="rgba(196,168,130,.1)" stroke-width="1"/>
+          <circle cx="80" cy="100" r="84" stroke="rgba(196,168,130,.05)" stroke-width="1"/>
+          <defs><linearGradient id="asvg" x1="26" y1="14" x2="148" y2="186" gradientUnits="userSpaceOnUse"><stop stop-color="#D4B892"/><stop offset="1" stop-color="#C4A882"/></linearGradient></defs>
+        </svg>
+        <!-- Floating stat badges -->
+        <div class="about-badge" style="top:28px;right:28px;border-color:rgba(196,168,130,.2)">
+          <div class="about-badge-n" style="color:var(--gold)">4.9★</div>
+          <div class="about-badge-l">Google Rating</div>
+        </div>
+        <div class="about-badge" style="top:28px;left:28px">
+          <div class="about-badge-n">10+</div>
+          <div class="about-badge-l">Years Exp.</div>
+        </div>
+        <div class="about-badge" style="bottom:100px;left:28px">
+          <div class="about-badge-n">500+</div>
+          <div class="about-badge-l">Homes Served</div>
+        </div>
+      </div>
+      <div class="about-caption">
+        <span class="about-caption-dot"></span>
+        <span class="about-caption-text">Active in Edmond &amp; OKC Metro &nbsp;·&nbsp; Lic. #OKE-29471</span>
+      </div>
+    </div>
+
+    <!-- Text column -->
+    <div class="about-text-col rvr">
+      <div class="about-label">About Us</div>
+      <h2 class="about-h">Why Edmond<br><em>Trusts Us</em></h2>
+      <blockquote class="about-quote">"Every technician is licensed, background-checked, and trained to communicate clearly."</blockquote>
+      <p class="about-body">E7 A Electrical Solution has served Edmond and the OKC metro since 2014. We pull permits, pass inspections, and stand behind every job we complete — no exceptions.</p>
+      <div class="cred-list">
+        <div class="cred-item"><div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><span class="cred-strong">Oklahoma Electrical License</span><span class="cred-sub">Lic. #OKE-29471 · Full liability &amp; workers' comp</span></div></div>
+        <div class="cred-item"><div class="cred-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><span class="cred-strong">Free Written Estimates</span><span class="cred-sub">No pressure. No hidden fees. Clear pricing every time.</span></div></div>
+        <div class="cred-item"><div class="cred-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><span class="cred-strong">24/7 Emergency Response</span><span class="cred-sub">We answer because emergencies don't schedule themselves.</span></div></div>
+      </div>
+      <a href="#contact" class="btn-fill" style="display:inline-flex">Get Your Free Estimate <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+
+  <!-- Numbers band below about -->
+  <div class="numbers-band">
+    <div class="nb-item rv d1"><div class="nb-n">10+</div><div class="nb-l">Years in Business</div><div class="nb-note">Serving Edmond &amp; OKC metro since 2014.</div></div>
+    <div class="nb-item rv d2"><div class="nb-n">500+</div><div class="nb-l">Homes Served</div><div class="nb-note">From single outlets to full rewires.</div></div>
+    <div class="nb-item rv d3"><div class="nb-n">4.9</div><div class="nb-l">Google Star Rating</div><div class="nb-note">Based on 120+ verified reviews.</div></div>
+    <div class="nb-item rv d4"><div class="nb-n">100%</div><div class="nb-l">Inspection Pass Rate</div><div class="nb-note">Every permitted job passes first time.</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PROCESS
+══════════════════════════════════════════════ -->
+<section id="process">
+  <div class="process-inner">
+    <div class="process-label rv">How It Works</div>
+    <h2 class="process-h rv">Simple, <em>Transparent</em> Process</h2>
+    <div class="process-steps">
+      <div class="pstep rv d1"><span class="pstep-n">01</span><div class="pstep-title">Call or Request Online</div><div class="pstep-desc">Tell us what you need. We ask a few questions and give you a realistic time window — no runaround.</div></div>
+      <div class="pstep rv d2"><span class="pstep-n">02</span><div class="pstep-title">Free On-Site Estimate</div><div class="pstep-desc">A licensed electrician visits, assesses, and gives you a clear written quote. Zero obligation.</div></div>
+      <div class="pstep rv d3"><span class="pstep-n">03</span><div class="pstep-title">We Do the Work</div><div class="pstep-desc">We show up on time, complete the job cleanly, and pass every city inspection first try.</div></div>
+      <div class="pstep rv d4"><span class="pstep-n">04</span><div class="pstep-title">You're Covered</div><div class="pstep-desc">We stand behind every job. If anything isn't right, we come back and fix it — no questions asked.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="test-inner">
+    <div class="test-head rv">
+      <div>
+        <div class="test-label">Reviews</div>
+        <h2 class="test-h">What Our <br><em>Customers Say</em></h2>
+      </div>
+      <p class="test-sub">Real homeowners across Edmond &amp; the OKC metro. Unedited, unfiltered.</p>
+    </div>
+
+    <!-- Featured big quote -->
+    <div class="test-featured rv">
+      <p class="test-big-q">"I had a full rewire done on my 1970s home. E7 A was incredibly thorough — passed every inspection on the first try. The crew respected my space throughout. I wouldn't call anyone else."</p>
+      <div class="test-big-meta">
+        <div class="tnm">David &amp; Linda Walker</div>
+        <div class="tlc">Edmond, OK · Full Home Rewire</div>
+      </div>
+    </div>
+
+    <!-- Three smaller -->
+    <div class="test-grid">
+      <div class="test-card rv d1">
+        <div class="tst"><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="tq">"Called at 10pm Saturday — power was out in half my house. They were here in 45 minutes. These guys actually answer the phone."</p>
+        <div class="tau"><div class="tav">KP</div><div><div class="tnm">Karen Petit</div><div class="tlc">Edmond, OK · Emergency</div></div></div>
+      </div>
+      <div class="test-card rv d2">
+        <div class="tst"><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="tq">"Tesla Level 2 charger installed in 2 hours. Clean work, exactly what I was quoted. No surprises. My car charges perfectly every night."</p>
+        <div class="tau"><div class="tav">SR</div><div><div class="tnm">Sarah Reynolds</div><div class="tlc">OKC, OK · EV Charger</div></div></div>
+      </div>
+      <div class="test-card rv d3">
+        <div class="tst"><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="ts" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="tq">"Panel replaced same-day. The quote I got was exactly the price I paid — no upsells, no surprises. Rare these days."</p>
+        <div class="tau"><div class="tav">JM</div><div><div class="tnm">James Mitchell</div><div class="tlc">Edmond, OK · Panel Upgrade</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="rvl">
+      <div class="contact-label">Get In Touch</div>
+      <h2 class="contact-h">Let's Talk About<br><em>Your Project</em></h2>
+      <p class="contact-sub">We respond within a few hours with a clear answer and a fair estimate — no pressure, no obligation.</p>
+      <div class="cways">
+        <a href="tel:4055550187" class="cway"><div class="cway-ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="cway-l">Phone · 24/7</div><div class="cway-v">(405) 555-0187</div></div></a>
+        <a href="mailto:info@e7aelectrical.com" class="cway"><div class="cway-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="cway-l">Email</div><div class="cway-v">info@e7aelectrical.com</div></div></a>
+        <div class="cway" style="cursor:default"><div class="cway-ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="cway-l">Service Area</div><div class="cway-v">Edmond &amp; Greater OKC Metro</div></div></div>
+      </div>
+    </div>
+    <div class="rvr">
+      <div class="contact-form">
+        <div class="form-h">Request a Free Estimate</div>
+        <div class="form-s">Usually responds within 2 hours on business days</div>
+        <form onsubmit="handleSubmit(event)" novalidate>
+          <div class="frow">
+            <div class="fg"><label>First Name</label><input type="text" placeholder="John" autocomplete="given-name"/></div>
+            <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" autocomplete="family-name"/></div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label>Phone</label><input type="tel" placeholder="(405) 000-0000" autocomplete="tel"/></div>
+            <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" autocomplete="email"/></div>
+          </div>
+          <div class="fg"><label>Service Needed</label><select><option value="" disabled selected>Select a service…</option><option>Panel Upgrade</option><option>Wiring &amp; Rewiring</option><option>Outlet &amp; Switch</option><option>Lighting</option><option>Emergency Service</option><option>EV Charger</option><option>Other</option></select></div>
+          <div class="fg"><label>Tell Us About Your Project</label><textarea placeholder="Describe what you need — home size, current issue, timeline…"></textarea></div>
+          <button type="submit" class="form-btn" id="fbtn">Send Request — It's Free</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="ftop">
+      <div class="fbl">
+        <div class="nlogo"><div class="nlogo-ic" style="width:26px;height:26px"><svg viewBox="0 0 24 30" style="width:12px;height:12px"><path d="M18 2L4 16H12L10 28L22 12H14L18 2Z" stroke="var(--gold)" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="nlogo-tx" style="font-size:.88rem">E7 A <em>Electrical</em></div></div>
+        <p>Licensed residential electrical contractors in Edmond, Oklahoma. Serving the OKC metro since 2014.</p>
+        <div class="flic">⚡ Lic. #OKE-29471</div>
+      </div>
+      <div class="fc"><h5>Services</h5><ul><li><a href="#services">Panel Upgrades</a></li><li><a href="#services">Wiring &amp; Rewiring</a></li><li><a href="#services">Outlets</a></li><li><a href="#services">Lighting</a></li><li><a href="#services">EV Chargers</a></li><li><a href="#services">Emergency</a></li></ul></div>
+      <div class="fc"><h5>Company</h5><ul><li><a href="#about">About Us</a></li><li><a href="#process">Process</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact">Contact</a></li><li><a href="#contact">Free Estimate</a></li></ul></div>
+      <div class="fc"><h5>Contact</h5><address><a href="tel:4055550187">(405) 555-0187</a><br><a href="mailto:info@e7aelectrical.com">info@e7aelectrical.com</a><br>Edmond, Oklahoma<br>OKC Metro</address></div>
+    </div>
+    <div class="fbot">
+      <p>© 2024 <span>E7 A Electrical Solution</span>. All rights reserved.</p>
+      <p>24/7 Emergency: <span>(405) 555-0187</span></p>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:4055550187" class="fcall" id="fcall">
+  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Call Now · 24/7
+</a>
+
+<script>
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    window.scrollTo({ top: el.offsetTop - 72, behavior: 'smooth' });
+  });
+});
+
+/* LOADER + HERO REVEAL */
+const loader = document.getElementById('loader');
+function revealHero() {
+  document.querySelectorAll('.ha').forEach((el, i) => setTimeout(() => el.classList.add('show'), i * 150));
+}
+function hideLoader() { loader.classList.add('out'); setTimeout(revealHero, 680); }
+const _fs = setTimeout(hideLoader, 5000);
+setTimeout(() => { clearTimeout(_fs); hideLoader(); }, 2600);
+
+/* NAV + SCROLL */
+const nav  = document.getElementById('nav');
+const fc   = document.getElementById('fcall');
+const secs = [...document.querySelectorAll('section[id]')];
+const nls  = [...document.querySelectorAll('.nl')];
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('pinned', y > 80);
+  fc.style.opacity = y > 500 ? '1' : '0';
+  fc.style.pointerEvents = y > 500 ? 'auto' : 'none';
+  let cur = '';
+  secs.forEach(s => { if (y >= s.offsetTop - 130) cur = s.id; });
+  nls.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur));
+}, { passive: true });
+
+/* HAMBURGER */
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mob');
+if (ham) ham.addEventListener('click', () => {
+  const open = ham.classList.toggle('open');
+  mob.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+function closeMob() {
+  if (ham) { ham.classList.remove('open'); }
+  mob.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* SCROLL REVEAL */
+const rvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rvObs.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' });
+document.querySelectorAll('.rv, .rvl, .rvr').forEach(el => rvObs.observe(el));
+
+/* PARALLAX — disabled on mobile */
+function parallax() {
+  if (window.innerWidth <= 768) return;
+  document.querySelectorAll('[data-parallax]').forEach(el => {
+    const r = el.getBoundingClientRect();
+    const speed = parseFloat(el.dataset.parallax) || 0.35;
+    const offset = (r.top + r.height / 2 - window.innerHeight / 2) * speed;
+    el.style.transform = `translateY(${offset}px)`;
+  });
+}
+window.addEventListener('scroll', parallax, { passive: true });
+parallax();
+
+/* ⚡ LIGHTNING CURSOR */
+(function() {
+  const canvas = document.getElementById('boltCanvas');
+  const ctx = canvas.getContext('2d');
+  const trail = [];
+  const LAG = 2000;
+  let cx = -999, cy = -999, alpha = 0, path = [], regen = 0;
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+  window.addEventListener('mousemove', e => {
+    cx = e.clientX; cy = e.clientY;
+    trail.push({ x: cx, y: cy, t: Date.now() });
+    const cut = Date.now() - 5000;
+    while (trail.length && trail[0].t < cut) trail.shift();
+  }, { passive: true });
+  function gen(x1, y1, x2, y2, d) {
+    if (d === 0) return [[x1,y1],[x2,y2]];
+    const mx=(x1+x2)/2, my=(y1+y2)/2, dx=x2-x1, dy=y2-y1, l=Math.sqrt(dx*dx+dy*dy);
+    const o=(Math.random()-.5)*l*.38, nx=-dy/l, ny=dx/l;
+    return [...gen(x1,y1,mx+nx*o,my+ny*o,d-1),...gen(mx+nx*o,my+ny*o,x2,y2,d-1).slice(1)];
+  }
+  function draw(pts, a) {
+    if (!pts || pts.length < 2) return;
+    ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
+    for (let i=1;i<pts.length;i++) ctx.lineTo(pts[i][0],pts[i][1]);
+    ctx.strokeStyle=`rgba(196,168,130,${a*.42})`; ctx.lineWidth=1;
+    ctx.shadowColor='rgba(196,168,130,.55)'; ctx.shadowBlur=10; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
+    for (let i=1;i<pts.length;i++) ctx.lineTo(pts[i][0],pts[i][1]);
+    ctx.strokeStyle=`rgba(196,168,130,${a*.12})`; ctx.lineWidth=5; ctx.shadowBlur=22; ctx.stroke();
+    ctx.shadowBlur=0;
+    ctx.beginPath(); ctx.arc(pts[0][0],pts[0][1],2.2,0,Math.PI*2);
+    ctx.fillStyle=`rgba(196,168,130,${a*.6})`; ctx.shadowColor='rgba(196,168,130,.8)'; ctx.shadowBlur=12; ctx.fill(); ctx.shadowBlur=0;
+  }
+  function frame(now) {
+    requestAnimationFrame(frame);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const tgt = now-LAG; let lag = null;
+    for (let i=trail.length-1;i>=0;i--) { if (trail[i].t<=tgt){lag=trail[i];break;} }
+    if (!lag) return;
+    const dx=cx-lag.x, dy=cy-lag.y, dist=Math.sqrt(dx*dx+dy*dy);
+    alpha = dist<18 ? Math.max(0,alpha-.04) : Math.min(1,alpha+.08);
+    if (alpha<.01) return;
+    if (now-regen>80||!path.length) { path=gen(lag.x,lag.y,cx,cy,dist>180?4:3); regen=now; }
+    draw(path, alpha);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* FORM */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('fbtn');
+  btn.textContent = '✓ Sent — we\'ll be in touch soon!';
+  btn.style.background = '#2d6a4f'; btn.style.borderColor = '#2d6a4f'; btn.style.color = '#fff'; btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send Request — It\'s Free';
+    btn.style.background = ''; btn.style.borderColor = ''; btn.style.color = ''; btn.disabled = false;
+    e.target.reset();
+  }, 5000);
+}
+</script>
+</body>
+</html>
